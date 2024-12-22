@@ -1,6 +1,13 @@
 <script lang="ts">
 	import '../app.css';
-	let { children } = $props();
+	import ChatHistory from '../presentation/components/ChatHistory.svelte';
+	import {exampleChats}  from '../exampleMessages.ts';
+	import {LocalStorageChatRepository} from '../infrastructure/repositories/LocalStorageChatRepository.ts';
+	
+	const repository = new LocalStorageChatRepository();
+	exampleChats.forEach(c => repository.saveChat(c));
 </script>
 
-{@render children()}
+<chat-history-container>
+	<ChatHistory />
+</chat-history-container>
