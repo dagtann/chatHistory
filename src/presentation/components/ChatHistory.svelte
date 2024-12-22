@@ -85,18 +85,30 @@
     <h2 class="text-xl font-bold mb-2">Chat History</h2>
     {#each Object.keys(groupedChats) as group}
       {#if groupedChats[group].length}
-        <h3 class="text-lg font-semibold mt-4">{group}</h3>
+        <span class="flex h-9 items-center">
+          <h3 class="text-lg font-semibold mt-4">{group}</h3>
+        </span>
         <ul class="menu bg-base-100 rounded-box p-2">
           {#each groupedChats[group] as chat}
-            <li class="flex justify-between items-center mb-2">
-              <div on:click={() => handleOpen(chat)} class="cursor-pointer">
+            <li class="relative grow overflow-hidden whitespace-nowrap group flex flex-row items-center gap-2 px-3 py-2 rounded-md transition hover:bg-white/10 hover:text-white cursor-pointer">
+              <button 
+                class="shadow-none no-transition no-animation" style="background-color: transparent"
+                on:click={() => handleOpen(chat)}>
                 {chat.title}
-              </div>
-              <div class="flex gap-2">
-                <button class="btn btn-sm" on:click={() => handleRename(chat)}>Rename</button>
-                <button class="btn btn-sm" on:click={() => handleDelete(chat)}>Delete</button>
-                <button class="btn btn-sm" on:click={() => handleShare(chat)}>Share</button>
-              </div>
+              </button>
+                <!-- Todo: Move to component -->
+              <kebab-menu-container class="dropdown dropdown-bottom dropdown-start relative"  style="background-color: transparent">
+                <button tabindex="0" aria-label="Options">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                    <path d="M3 10a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM8.5 10a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM15.5 8.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z" />
+                  </svg>                  
+                </button>
+                <ul tabindex="0" class="dropdown-content z-50">
+                  <li><button on:click={() => handleRename(chat)}>Rename</button></li>
+                  <li><button on:click={() => handleDelete(chat)}>Delete</button></li>
+                  <li><button on:click={() => handleShare(chat)}>Share</button></li>
+                </ul>
+              </kebab-menu-container>
             </li>
           {/each}
         </ul>
