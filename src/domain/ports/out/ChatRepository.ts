@@ -1,4 +1,4 @@
-import type { Chat } from "./Chat";
+import type { Chat } from "../../entities/Chat.ts";
 
 export interface ChatRepository {
     getAllChats(): Promise<Chat[]>;

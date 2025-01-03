@@ -1,5 +1,5 @@
-import type { Chat } from "../../domain/entities/Chat.ts";
-import type { ChatRepository } from "../../domain/entities/ChatRepository.ts";
+import type { Chat } from "../../../domain/entities/Chat.ts";
+import type { ChatRepository } from "../../../domain/ports/out/ChatRepository.ts";
 
 const STORAGE_KEY = 'chatHistory';
 

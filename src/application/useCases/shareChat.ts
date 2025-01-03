@@ -1,4 +1,4 @@
-import type { ChatRepository } from "../entities/ChatRepository.ts";
+import type { ChatRepository } from "../../domain/ports/out/ChatRepository.ts";
 
 export async function shareChat(
     repository: ChatRepository,

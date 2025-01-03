@@ -1,7 +1,7 @@
-import { listChats, groupChatsByDate } from "../../domain/useCases/listChats.js";
-import { searchChats } from "../../domain/useCases/searchChats.js";
-import { openChat } from "../../domain/useCases/openChat.js";
-import type { ChatRepository } from "../../domain/entities/ChatRepository.ts";
+import { listChats, groupChatsByDate } from "../useCases/listChats.js";
+import { searchChats } from "../useCases/searchChats.js";
+import { openChat } from "../useCases/openChat.js";
+import type { ChatRepository } from "../../domain/ports/out/ChatRepository.ts";
 import type { Chat } from "../../domain/entities/Chat.ts";
 
 export class ChatHistoryService {
